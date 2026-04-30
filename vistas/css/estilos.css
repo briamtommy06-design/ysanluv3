@@ -1,0 +1,27 @@
+/* ===== MODAL IMAGEN PRODUCTO ===== */
+
+#modalImagenProducto .modal-dialog {
+  max-width: 650px;          /* ancho del modal: súbelo o bájalo a tu gusto */
+  margin: 30px auto;
+}
+
+#modalImagenProducto .modal-imagen-content {
+  border-radius: 8px;
+}
+
+#modalImagenProducto .modal-body {
+  padding: 10px;
+  text-align: center;
+}
+
+#modalImagenProducto .img-zoom-center {
+  max-width: 100%;
+  max-height: calc(100vh - 250px); /* que no se salga de la pantalla */
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+
+#modalImagenProducto .modal-footer {
+  border-top: 0;
+}
