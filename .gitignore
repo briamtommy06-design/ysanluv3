@@ -1,0 +1,38 @@
+# Librerías externas o pesadas
+extensiones/
+vendor/
+node_modules/
+plugins/
+adminlte/
+AdminLTE/
+
+# Recursos de plantilla AdminLTE si están dentro de vistas
+vistas/bower_components/
+vistas/dist/
+vistas/plugins/
+
+# Archivos de conexión o credenciales
+.env
+*.env
+modelos/conexion.php
+
+# Archivos de prueba local
+test_db.php
+test_pdo.php
+
+# Imágenes o archivos subidos
+uploads/
+public/uploads/
+vistas/img/productos/
+
+# Temporales y logs
+*.log
+cache/
+tmp/
+
+# Configuración local de VS Code
+.vscode/
+
+# Archivos del sistema
+Thumbs.db
+.DS_Store
