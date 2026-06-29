@@ -50,26 +50,9 @@
 
                         <span class="input-group-addon"><i class="fa fa-key"></i></span>
                         <?php
-                          $item = null;
-                          $valor = null;
-                          $ventas = ControladorVentas::ctrMostrarVentas($item,$valor);
-
-                          if(!$ventas){
-
-                            echo '<input type="text" class="form-control" id="nuevaVenta" name="nuevaVenta" value="10001" readonly>';
-
-
-                          }else{
-
-                            foreach($ventas as $key => $value){
-
-                            }
-                            $codigo = $value["codigo"] + 1;
-                            echo '<input type="text" class="form-control" id="nuevaVenta" name="nuevaVenta" value="'.$codigo.'" readonly>';
-
-
-                          }
-                        ?>
+                          $codigoVenta = ControladorVentas::ctrObtenerSiguienteCodigoVenta();
+                          echo '<input type="text" class="form-control" id="nuevaVenta" name="nuevaVenta" value="'.$codigoVenta.'" readonly>';
+                        ?>git add .
 
                        
 

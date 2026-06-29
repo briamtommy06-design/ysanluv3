@@ -30,6 +30,17 @@ class ModeloVentas{
 
 
     }
+
+    static public function mdlObtenerSiguienteCodigoVenta(){
+
+        $stmt = Conexion::conectar()->prepare("SELECT MAX(codigo) as ultimo_codigo FROM ventas");
+        $stmt->execute();
+        $respuesta = $stmt->fetch();
+
+        $ultimoCodigo = isset($respuesta["ultimo_codigo"]) ? (int)$respuesta["ultimo_codigo"] : 0;
+
+        return $ultimoCodigo > 0 ? $ultimoCodigo + 1 : 10001;
+    }
 	
 
 	static public function mdlMostrarReporteVenta(){

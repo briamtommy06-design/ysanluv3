@@ -5,7 +5,7 @@ class Conexion {
 
         $host   = '127.0.0.1';   // IGUAL que en test_pdo
         $port   = 3306;          // IGUAL que en test_pdo
-        $dbname = 'ysanlunew';    // IGUAL que en test_pdo
+        $dbname = 'ysanlu';    // IGUAL que en test_pdo
         $user   = 'root';        // IGUAL que en test_pdo
         $pass   = '';            // IGUAL que en test_pdo
 

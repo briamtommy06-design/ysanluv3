@@ -3,7 +3,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Administrar Clientes
+        Administrar Clientes 
         
       </h1>
       <ol class="breadcrumb">

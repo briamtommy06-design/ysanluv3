@@ -8,6 +8,10 @@ class ControladorVentas{
         return $respuesta;
     }
 
+    static public function ctrObtenerSiguienteCodigoVenta(){
+        return ModeloVentas::mdlObtenerSiguienteCodigoVenta();
+    }
+
     static public function ctrCrearVenta(){
         
         if(isset($_POST["nuevaVenta"])){
@@ -76,10 +80,15 @@ class ControladorVentas{
             /* GUARDAR LA COMPRA */
 
             $tabla = "ventas";
+            $codigoVenta = ModeloVentas::mdlObtenerSiguienteCodigoVenta();
+
+            while (ModeloVentas::mdlMostrarVentas("ventas", "codigo", $codigoVenta)) {
+                $codigoVenta++;
+            }
 
             $datos = array("id_vendedor"=> $_POST["idVendedor"],
                             "id_cliente"=> $_POST["seleccionarCliente"],
-                            "codigo" => $_POST["nuevaVenta"],
+                            "codigo" => $codigoVenta,
                             "productos" => $_POST["listaProductos"],
 							 "tipo_cambio" => $_POST["listaTipoCambio"],
 							 "total_soles" => $_POST["listaTotalSoles"],                        
@@ -92,13 +101,12 @@ class ControladorVentas{
 						 );
 
             $respuesta = ModeloVentas::mdlIngresarVenta($tabla,$datos);
-			$codigoVenta = $_POST["nuevaVenta"];
 			if ($respuesta == "ok") {
 
 				require_once "movimientos_stock.controlador.php";
 
 				// Obtener ID real de la venta recién creada
-				$venta = ModeloVentas::mdlMostrarVentas("ventas", "codigo", $_POST["nuevaVenta"]);
+				$venta = ModeloVentas::mdlMostrarVentas("ventas", "codigo", $codigoVenta);
 				$idVenta = (int)$venta["id"];
 
 				$listaProductos = json_decode($_POST["listaProductos"], true);
@@ -132,7 +140,7 @@ class ControladorVentas{
 						"costo_docena" => null,
 						"moneda" => $moneda,
 						"precio_unitario" => null,
-						"observacion" => "Venta #".$_POST["nuevaVenta"]." - Cliente: ".$nombreCliente
+						"observacion" => "Venta #".$codigoVenta." - Cliente: ".$nombreCliente
 					];
 
 					ControladorMovimientosStock::ctrRegistrarMovimiento($datosMov);
